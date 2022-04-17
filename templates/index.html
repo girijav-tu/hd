@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title> Currency Detection </title>
+	<style>
+		* { font-size:30px; font-family:Times New Roman; }
+		body { background-color:#FFEFD5; }
+	</style>
+	
+</head>
+<body>
+  <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">   </script>
+      
+  <script>
+    $(document).ready(()=>{
+      $('#photo').change(function(){
+        const file = this.files[0];
+        console.log(file);
+        if (file){
+          let reader = new FileReader();
+          reader.onload = function(event){
+            console.log(event.target.result);
+            $('#imgPreview').attr('src', event.target.result);
+          }
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+
+	</script>
+
+	<script>
+		function testJS() {
+    	var b = document.getElementById('predict_text').value,
+        	url = 'http://path_to_your_html_files/index.html?predict_text=' + encodeURIComponent(b);
+
+    	document.location.href = url;
+		}
+	</script>
+ 
+
+<center>
+	<h1>
+	<b>
+	<font size=15 class="text-center">
+	Counterfeit Currency Detection
+	</font>
+	</b>
+	</h1>
+	<h2> Take the Picture from Camera!</h2>
+	<form action="/tasks", method="post">
+		<input type="submit", value="Capture", name="click">
+	</form>
+	<img src="{{ url_for('video_feed') }}" height="80%">
+	
+	<h2> Upload an image to predict!</h2>
+	<form action="/submit", method="post", enctype="multipart/form-data">
+		Upload the image: <input type="file" id="photo" name="imagefile">
+		<p><input type="Submit" value="Predict Image"></p>
+	</form>
+	<img src="{{ user_image }}" id="imgPreview" height="736" width="981">
+	
+  <p>
+	<h2>
+	<h3>Prediction:</h3>
+	<b> {{ predict_text }}</b>
+	<br><br>
+	<h3>Confidence Score:</h3>
+	<b> {{ msg }}</b> 
+	</h2>
+	<br><br>
+	</p>
+
+</center>
+</body>
+</html>

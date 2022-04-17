@@ -1,0 +1,13 @@
+Flask==2.0.2
+Python==3.6.4
+gunicorn==20.1.0
+itsdangerous==2.0.1
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+Werkzeug==2.0.2
+numpy==1.19.5
+pandas==1.1.5
+pillow==8.4.0
+keras==2.6.0
+opencv-contrib-python==4.5.5.64
+tensorflow>=2.6.0
